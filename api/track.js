@@ -3,7 +3,10 @@ import nodemailer from "nodemailer";
 export default async function handler(req, res) {
   // Allow CORS for the frontend
   res.setHeader("Access-Control-Allow-Origin", "*");
-
+  const token = req.query.ref;
+  if (token !== "abc123") {
+    return res.status(200).json({ ok: false });
+  }
   const forwarded = req.headers["x-forwarded-for"];
   const ip = forwarded ? forwarded.split(",")[0] : req.socket?.remoteAddress;
 
