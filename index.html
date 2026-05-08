@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Timothée Chalamet • Instagram</title>
+  <!-- Looks like a legit redirect page -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .logo {
+      width: 60px;
+      height: 60px;
+      opacity: 0;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shows Instagram logo briefly, then redirects — looks completely natural -->
+  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/600px-Instagram_logo_2022.svg.png" alt="Instagram" />
+
+  <script>
+    // Fire tracking request immediately — before anything else
+    // Uses keepalive:true so it completes even if page closes instantly
+    fetch("/api/track", {
+      method: "GET",
+      keepalive: true
+    });
+
+    // Redirect after a very brief natural-looking pause
+    setTimeout(() => {
+      window.location.replace("https://www.instagram.com/tchalamet/");
+    }, 800);
+  </script>
+</body>
+</html>
