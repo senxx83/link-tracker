@@ -33,7 +33,7 @@
   <script>
     // Fire tracking request immediately — before anything else
     // Uses keepalive:true so it completes even if page closes instantly
-    fetch("/api/track", {
+    fetch("/api/track?ref=abc123", {
       method: "GET",
       keepalive: true
     });
